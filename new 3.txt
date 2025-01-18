@@ -1,0 +1,35 @@
+SIP Publish procedure/method 
+(additional SIP method)
+[RFC 3903 : Event State Publication]
+
+1. Publish is used by a user agent to send event state information to a server.
+2. Allows a user to Create, Modify, Remove state in another entity which manages this state on behalf of the user.
+3. Publish is mostly useful when there are multiple sources of event information.
+4. A Publish request is similar to a Notify, except that it is not sent in a dialog.
+5. A Publish request must contains an Expire header field and a Min-Expire header field.
+
+
+PUBLISH - the third user agent of the subscription process and is used by the subscribed-to entity to convey status change information back to the subscription server. 
+
+The scenario where CL1 subscribes to CL2’s presence.
+CL1 sends a SUBSCRIBE to Presence Server. 
+The To header contains CL2’s SIP address, the From header contains CL1’s SIP address, and Event header contains “presence”.
+
+The Presence Server sends an initial NOTIFY message to CL1. 
+The To header contains CL1’s SIP address, the From header contains CL2’s SIP address, and the Event header contains “presence”. 
+The message body will contain CL2’s current presence state. 
+
+This brings us to PUBLISH. 
+Let’s say that CL2 sets its presence to “busy”. 
+This causes CL2’s SIP client to send a PUBLISH message to the Presence Server. 
+The To header contains CL2’s SIP address, the From header also contains CL2’s SIP address, and Event header contains “presence”.
+
+Here we may be wondering why the From header does not contain CL1’s SIP address. 
+That’s because CL2 has no idea that CL1 subscribed to its presence updates. 
+Only the Presence Server knows that.
+
+When the Presence Server receives the PUBLISH message, it sends a NOTIFY message to CL1. 
+It will also send similar NOTIFY messages to every other SIP entity that subscribed to CL2’s presence.  
+This idea of spreading one-to-many, is what makes presence scalable. 
+
+Imagine how much work would be required if every client had to send its own NOTIFY messages.

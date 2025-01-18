@@ -1,0 +1,102 @@
+SIP Basics
+
+Industry wide used standard
+
+SIP is a Peer to Peer Protocol
+Peers are called User Agents
+User Agents can function 2 roles - Client & Server
+User Agent Client >> initiates Client requests
+User Agent Server >> receives & processes the request and returns a response
+
+SIP could be for Creating, Modifying, Terminating sessions with one or more participants
+Sessions could be for multimedia conferences, Internet telephony calls, multimedia distribution
+Invitations to create sessions and negotiate capabilities
+
+Define roles of SIP Proxy servers in details
+Defines behaviour of Client & Server
+Defines authentication mechanism
+
+===============================================================================================
+
+SIP Sessions & Transport
+
+SIP members can communicate via
+	- Unicast (single sender - single recipient)
+	- Multicast (one/more senders - multiple recipients)
+	- via a mesh of unicast relations
+	- or combination of these
+	
+===============================================================================================
+
+Signalling & Deployment
+
+SIP Supports 5 methods of establishing & terminating multimedia communications.
+1st - User location >> Identifies the location of target endpoints.
+2nd - User availability >> Identifies the availability of target endpoints.
+3rd - User capabilities >> Identifies the media capabilities of target endpoints.
+4th - Session setup >> Establishing a session between origin & target endpoints.
+5th - Session management >> Manages the transfer & termination of calls.
+
+===============================================================================================
+
+Capabilities
+
+Identifies Location >> Supports address resloution, name mapping, and call redirection.
+Identifies Media Capabilities >> Using SDP (Session Description Protocol).
+								 Network metrics, Media types, Timing, Media formats and other Associated properties.
+Identifies Availability >> Returns a message indicating why target is unavailable.
+Establishing Sessions >> Supports Mid-Call changes (say, adding another end point, codec changes)
+IP Centrex features >> Handles transfer & hold calls
+
+===============================================================================================
+
+Clients
+
+IP Phones
+Softphones - PCs that have phone capabilities installed
+Cisco SIP IP phones can initiate SIP request, and respond to requests.
+SIP Gateways - Provide call control
+SIP Conferencing Stations
+
+===============================================================================================
+
+Servers
+
+Proxy Server 
+Receives requests & forwards on clients's behalf.
+Authentication, Authorization, Routing
+
+Redirect Server
+Provides client with next hop(s) info
+Client will contact the next hop server or UAS directly
+
+Registrar Server
+Receives requests from UAC's for registration of their current location
+Often co-located with a redirect or proxy server
+
+===============================================================================================
+===============================================================================================
+
+SIP Methods From RFC 3261
+
+INVITE - A user or service is being invited to participate in a multimedia session
+ACK - Confirms that a client has received a final response to an INVITE request
+BYE - Terminates an existing session; can be sent by any user agent (in a multiparty session)
+CANCEL - Cancel pending requests; does not terminate sessions that have been accepted
+OPTIONS - Queries the capabilities of servers
+REGISTER - Registers the user agent with the registrar server of a domain
+
+===============================================================================================
+
+Additional SIP Methods
+
+INFO - RFC 2976 - SIP INFO method
+PRACK - RFC 3262 - Reliability of Provisional Responses in SIP
+SUBSCRIBE & NOTIFY - RFC 3265 - Specific Event Notification
+UPDATE - RFC 3311 - SIP UPDATE method
+MESSAGE - RFC 3428 - Extension for Instant Messaging
+REFER - RFC 3515 - SIP REFER method
+PUBLISH - RFC 3903 - Event State Publication
+
+===============================================================================================
+===============================================================================================
